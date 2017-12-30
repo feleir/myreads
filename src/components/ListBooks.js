@@ -15,7 +15,9 @@ const ListBooks = (props) => {
     return (
         <div className="list-books">
             <div className="list-books-title">
-                <h1>MyReads</h1>
+                <h1>
+                    MyReads by <a href="https://www.linkedin.com/in/ivan-diaz-fernandez-34008022" target="_blank">Ivan Diaz</a>
+                </h1>
             </div>
             <div className="list-books-content">
                 { 

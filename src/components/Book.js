@@ -17,7 +17,13 @@ const Book = (props) => {
             <div className="book-top">
                 <Link className="book-details" to={detailLink}>
                     <div className="book-cover" style={bookCoverStyle}/>
-                    <div className="book-link">Details</div>
+                    {props.showDetailsLink && 
+                        (
+                            <div className="book-link">
+                                Click for more details
+                            </div>
+                        )
+                    }
                 </Link> 
                 <div className="book-shelf-changer">
                     <select value={book.shelf} onChange={e => 

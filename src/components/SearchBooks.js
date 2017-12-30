@@ -7,24 +7,15 @@ import * as BooksAPI from '../BooksAPI'
 class SearchBooks extends Component {
     state = {
         query: '',
-        searchBooks: []
-    }
-
-    searchBooks = () => {
-        const { query } = this.state
-        if (query) {
-            BooksAPI.search(query).then(response => this.setState({ searchBooks : response.error ? [] : response}))
-        } else {
-            this.setState({ books: [] })
-        }
+        foundBooks: []
     }
 
     updateBookShelves = () => {
         const { libraryBooks } = this.props
-        const { searchBooks } = this.state
+        const { foundBooks } = this.state
 
         const mappedLibrary = new Map(libraryBooks.map(book => [book.id, book.shelf]))
-        return searchBooks.map(book => {
+        return foundBooks.map(book => {
             const libraryShelf = mappedLibrary.get(book.id)
             book.shelf = libraryShelf || 'none'
             return book
@@ -32,8 +23,13 @@ class SearchBooks extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({ query: query.trim() })
-        this.searchBooks()
+        query = query.trim()
+        this.setState({ query: query })
+        if (query) {
+            BooksAPI.search(query).then(response => this.setState({ foundBooks : response.error ? [] : response}))
+        } else {
+            this.setState({ foundBooks: [] })
+        }
     }
 
     render() {
@@ -58,7 +54,7 @@ class SearchBooks extends Component {
                         <ol className="books-grid">
                         {books.map(book => (
                                 <li key={book.id}>
-                                    <Book book={book} />
+                                    <Book book={book} showDetailsLink="true"/>
                                 </li>
                             ))}
                         </ol>

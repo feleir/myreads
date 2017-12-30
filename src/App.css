@@ -20,6 +20,9 @@ body, .app {
   margin: 0;
   color: white;
 }
+.list-books-title a {
+  color: white;
+}
 
 .list-books-content {
   padding: 0 0 80px;
