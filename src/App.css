@@ -85,7 +85,7 @@ body, .app {
   outline: none;
 }
 
-.close-search {
+.close-search, .close-book-details {
   display: block;
   top: 20px;
   left: 15px;
@@ -135,14 +135,15 @@ body, .app {
 
 .book-top {
   position: relative;
-  height: 200px;
+  height: 158px;
+  width: 128px;
   display: flex;
   align-items: flex-end;
 }
 
 .book-shelf-changer {
   position: absolute;
-  right: 0;
+  right: -15px;
   bottom: -10px;
   width: 40px;
   height: 40px;
@@ -166,9 +167,98 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
+
+.book-details {
+  color: white;
+  text-align: center;
+}
+
+.book-link {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  background-color: green;
+  border-radius: 3px 3px;
+  display: inline;
+  padding:5px 5px;
+  font-size: 0.8em;
+  width:100%;
+}
+
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+/* book details page */
+
+.book-details-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+  background-color: white;
+}
+.book-details-title-wrapper {
+  flex: 1;
+}
+.book-details-bar h2 {
+  width: 100%;
+  font-size: 1.25em;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.book-details-description {
+  padding: 80px 10px 20px;
+}
+
+.book-links {
+  float:left;
+  width:30%;
+  text-align: center;
+  margin-right:20px;
+  margin-left:10%;
+}
+
+.book-links .book {
+  margin: 0px auto;
+}
+
+.book-links a {
+  display: block;
+  font-size: 0.8em;
+}
+
+.book-description {
+  float:left;
+  width:40%;
+  text-align: justify;
+}
+
+.book-category-container {
+  padding:20px 20px;
+}
+
+.book-category {
+  color:white;
+  background-color: green;
+  border-radius: 3px 3px;
+  display: inline;
+  padding:5px 5px;
+  font-size: 0.8em;
+}
+
+/* General css styles */
+.align-center {
+  text-align: center;
 }
