@@ -1,6 +1,7 @@
 # MyReads Project
 
 This is my implementation of the MyReads project for Udacity's React Developer Nanodegree.
+
 Demo: https://mystifying-goldberg-603f2f.netlify.com/
 
 ## Setup
