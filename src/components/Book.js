@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import { BookType } from './common'
 import * as events from '../utils/events'
 
+const noCoverImage = 'http://via.placeholder.com/128x193?text=No%20Cover'
+
 const Book = (props) => {
     const { book } = props
     const bookCoverStyle = {
         width: 128,
         height: 158,
-        backgroundImage: `url('${book.imageLinks.smallThumbnail}')`
+        backgroundImage: `url('${book.imageLinks && book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : noCoverImage  }')`
     }
     const detailLink = `/book/${book.id}`
 
@@ -18,7 +20,7 @@ const Book = (props) => {
             <div className="book-top">
                 <Link className="book-details" to={detailLink}>
                     <div className="book-cover" style={bookCoverStyle}/>
-                    {props.showDetailsLink && 
+                    {props.showDetailsLink && book.description && 
                         (
                             <div className="book-link">
                                 Click for more details
@@ -39,7 +41,11 @@ const Book = (props) => {
                 </div>
             </div>
             <div className="book-title">{book.title}</div>
-            <div className="book-authors">{book.authors.join(', ')}</div>
+            {book.authors && 
+                (
+                    <div className="book-authors">{book.authors.join(', ')}</div>
+                )
+            }
         </div>
     )
 }

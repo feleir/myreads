@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import ListBooks from './components/ListBooks'
 import SearchBooks from './components/SearchBooks'
 import BookDetails from './components/BookDetails'
@@ -51,31 +51,32 @@ class BooksApp extends React.Component {
           style={ModalStyle}>
           <img src={loading} width="50" alt="Loading"/>
         </Modal>
-        <Route exact 
-          path="/" 
-          render={() => 
-            (
-              <ListBooks books={this.state.books} />
-            )
-          }
-        />
-        <Route 
-          path="/search" 
-          render={() => 
-            (
-              <SearchBooks libraryBooks={this.state.books} />
-            )
-          }
-        />
-        <Route
-          path="/book/:id" 
-          render={(props) => {
-              const { match: { params } } = props;
-              const libraryBook = this.state.books.find(book => book.id === params.id)
-              return <BookDetails libraryBook={libraryBook} bookId={params.id} />
+        <Switch>
+          <Route 
+            path="/search" 
+            render={() => 
+              (
+                <SearchBooks libraryBooks={this.state.books} />
+              )
             }
-          }
-        />
+          />
+          <Route
+            path="/book/:id" 
+            render={(props) => {
+                const { match: { params } } = props;
+                const libraryBook = this.state.books.find(book => book.id === params.id)
+                return <BookDetails libraryBook={libraryBook} bookId={params.id} />
+              }
+            }
+          />
+          <Route
+            render={() => 
+              (
+                <ListBooks books={this.state.books} />
+              )
+            }
+          />        
+        </Switch>
       </div>
     )
   }
