@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import BookShelf from './BookShelf'
+
+import PropTypes from 'prop-types' 
+import { BookType } from './common'
 import { groupBy } from '../utils/utils'
 
 const bookShelves = {
@@ -36,6 +39,10 @@ const ListBooks = (props) => {
             </div>
         </div>
     )
+}
+
+ListBooks.propTypes = {
+    books: PropTypes.arrayOf(BookType).isRequired
 }
 
 export default ListBooks

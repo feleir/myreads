@@ -8,24 +8,9 @@ import Modal from 'react-modal'
 import loading from './icons/loading.svg'
 import './App.css'
 
+import { ModalStyle } from './components/common'
 import * as BooksAPI from './BooksAPI'
 import * as events from './utils/events'
-
-const customStyles = {
-  overlay: {
-    backgroundColor: 'gray',
-    opacity: '0.5'
-  },
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    border: '0px',
-    backgroundColor: 'gray',
-    opacity: '0.5'
-  }
-}
 
 class BooksApp extends React.Component {
   state = {
@@ -63,7 +48,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <Modal
           isOpen={this.state.loading}
-          style={customStyles}>
+          style={ModalStyle}>
           <img src={loading} width="50" alt="Loading"/>
         </Modal>
         <Route exact 

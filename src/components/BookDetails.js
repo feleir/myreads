@@ -2,9 +2,16 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Book from './Book'
 
+import PropTypes from 'prop-types' 
+import { BookType } from './common'
 import * as BooksAPI from '../BooksAPI'
 
 class BookDetails extends Component {
+    static propTypes = {
+        bookId: PropTypes.string,
+        libraryBook: BookType
+    }
+
     state = {
         book: null
     }
@@ -52,7 +59,14 @@ class BookDetails extends Component {
                 }
                 {!book && 
                     (
-                        <div>Loading...</div>
+                        <div>
+                            <div className="book-details-bar">
+                                <Link className='close-book-details' to='/'>Close</Link>
+                                <div className="book-details-title-wrapper">
+                                    <h2>Retrieving data</h2>
+                                </div>
+                            </div>
+                        </div>
                     )
                 }
             </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { BookType } from './common'
 import * as events from '../utils/events'
 
 const Book = (props) => {
@@ -41,6 +42,10 @@ const Book = (props) => {
             <div className="book-authors">{book.authors.join(', ')}</div>
         </div>
     )
+}
+
+Book.propTypes = {
+    book: BookType.isRequired
 }
 
 export default Book
